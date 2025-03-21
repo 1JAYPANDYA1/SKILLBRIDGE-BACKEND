@@ -5,10 +5,12 @@ const validator = require('validator');
 const prisma = new PrismaClient();
 const Razorpay = require('razorpay');
 
-const razorpay = new Razorpay({
-  key_id: process.env.RAZOR_KEY_ID,
-  key_secret: process.env.RAZOR_KEY_SECRET
-});
+// const razorpay = new Razorpay({
+//   // key_id: process.env.RAZOR_KEY_ID,
+//   key_id:"",
+//   // key_secret: process.env.RAZOR_KEY_SECRET
+//   key_secret:""
+// });
 
 exports.getUserCourses = async (req, res) => {
   try {
@@ -85,12 +87,12 @@ exports.payment = async (req, res) => {
   console.log("i am paymenting")
   const { amount, currency, receipt } = req.body;
   try {
-    const order = await razorpay.orders.create({
-      amount: amount * 100, // Amount in paise
-      currency,
-      receipt
-    });
-    res.json(order);
+    // const order = await razorpay.orders.create({
+    //   amount: amount * 100, // Amount in paise
+    //   currency,
+    //   receipt
+    // });
+    // res.json(order);
   } catch (error) {
     res.status(500).send(error);
   }
